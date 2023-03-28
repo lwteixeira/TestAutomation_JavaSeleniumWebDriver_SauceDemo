@@ -5,12 +5,13 @@ import org.openqa.selenium.WebDriver;
 
 import Framawork.TestBase;
 import Framawork.Browse.Waits;
+import Framawork.Utils.FileOperation;
 import Tasks.CheckoutTask;
 import Tasks.LoginTask;
 import Tasks.OverviewTask;
 import Tasks.ProductTask;
 
-public class RealizarCompraComSucessoTest extends TestBase{ 
+public class RealizarCompraComSucessoPropertiesTest extends TestBase{ 
 
     private WebDriver driver = getDriverManager();
     
@@ -22,10 +23,13 @@ public class RealizarCompraComSucessoTest extends TestBase{
     
     @Test
     public void realizarCompra() {
-        loginTask.efetuarLogin();
+        String user = FileOperation.getProperties("user").getProperty("user");
+        String password = FileOperation.getProperties("user").getProperty("password");
+        loginTask.efetuarLoginParametrizado(user, password);
         productTask.selecionarProduto();
         checkoutTask.efetuarCheckout();
         overviewTask.finalizaCompra();
     }
-    
+  //FileOperation.getProperties("user").getProperty("user")
+  //FileOperation.getProperties("user").getProperty("password") 
 }

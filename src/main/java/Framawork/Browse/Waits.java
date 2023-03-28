@@ -17,7 +17,7 @@ public class Waits {
         this.driver = driver;
     }
     
-    // POR PADR√O SEMPRE COLOCAR 30 SEGUNDOS NO DURATIONS.OFSECONDS
+    // POR PADR√ÉO SEMPRE COLOCAR 30 SEGUNDOS NO DURATIONS.OFSECONDS
     public WebElement visibilitOfElement(By by) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
         return wait.until(ExpectedConditions.visibilityOfElementLocated(by));
@@ -28,6 +28,17 @@ public class Waits {
             return new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.visibilityOf(element));
         } catch (WebDriverException e) {
             return element;
+        }
+        //return element;
+    }
+   
+    
+    
+    public void esperar(){
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            // TODO: handle exception
         }
     }
 }
